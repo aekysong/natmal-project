@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SentenceController {
 
-    @GetMapping("")
-    public String hello(Model model) {
-        model.addAttribute("data", "hello!!");
-        return "hello";
-    }
+//    @GetMapping("")
+//    public String hello(Model model) {
+//        model.addAttribute("data", "hello!!");
+//        return "hello";
+//    }
 }
