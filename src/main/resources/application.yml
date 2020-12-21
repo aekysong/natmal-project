@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+
+server:
+  port: 6565
+
+# local 환경
+---
+spring:
+  profiles: local
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+#    data: classpath:data-h2.sql # 시작할 때 실행시킬 script
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  thymeleaf:
+    cache: false
