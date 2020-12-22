@@ -10,17 +10,20 @@ import lombok.Setter;
 @NoArgsConstructor
 public class WordSaveRequestDto {
 
+    private String author;
     private String word;
     private String meaning;
 
     @Builder
-    public WordSaveRequestDto(String word, String meaning) {
+    public WordSaveRequestDto(String author, String word, String meaning) {
+        this.author = author;
         this.word = word;
         this.meaning = meaning;
     }
 
     public Word toEntity() {
         return Word.builder()
+                .author(author)
                 .word(word)
                 .meaning(meaning)
                 .build();

@@ -1,6 +1,10 @@
 spring:
   profiles:
-    active: local
+    active: testbed
+  jpa:
+    show-sql: true
+    thymeleaf:
+      cache: false
 
 server:
   port: 6565
@@ -14,10 +18,25 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:mem:testdb
-#    data: classpath:data-h2.sql # 시작할 때 실행시킬 script
+    data: classpath:test_data.sql # 시작할 때 실행시킬 script
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: create-drop
-  thymeleaf:
-    cache: false
+
+# tb 환경
+---
+spring:
+  profiles: testbed
+  datasource:
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://arjuna.db.elephantsql.com:5432/fgugucui
+    username: fgugucui
+    password: # set password
+    hikari:
+      maximum-pool-size: 2
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: create-drop

@@ -15,7 +15,7 @@ public class WordController {
 
     @PostMapping("/words")
     public String saveWord(@RequestBody WordSaveRequestDto dto) {
-        System.out.println("REQUEST>> " + dto.getWord() + ": " + dto.getMeaning());
+        System.out.println("REQUEST>> " +  dto.getAuthor() + dto.getWord() + ": " + dto.getMeaning());
         wordService.save(dto);
         return "redirect:/index";
     }
