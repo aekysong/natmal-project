@@ -17,4 +17,10 @@ import java.util.List;
 public class WordController {
 
     private WordService wordService;
+    private WordRestController wordRestController;
+
+    @GetMapping("/form")
+    public String newWordForm() {
+        return "new-word-form";
+    }
 }

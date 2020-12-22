@@ -16,7 +16,7 @@ public class Word {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(nullable = false)
+    @Column
     private String author;
 
     @Column(nullable = false)

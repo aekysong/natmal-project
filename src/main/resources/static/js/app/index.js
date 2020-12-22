@@ -1,7 +1,7 @@
-var home = {
+var index = {
     init: function() {
         var _this = this;
         _this.alert("check!")
     }
 }
-home.init();
+index.init();

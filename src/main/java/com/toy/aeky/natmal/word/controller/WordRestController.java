@@ -18,12 +18,12 @@ public class WordRestController {
 
     private WordService wordService;
 
-    @GetMapping("/words")
+    @GetMapping("/api/words")
     public ResponseEntity<List> getAllWords() {
         return new ResponseEntity<List>(wordService.findAllDesc(), HttpStatus.OK);
     }
 
-    @PostMapping("/words")
+    @PostMapping("/api/words")
     public ResponseEntity<Long> saveWord(@RequestBody WordSaveRequestDto dto) {
         System.out.println("[WordRestController] REQUEST>> " +  dto.getAuthor() + ">> " + dto.getWord() + ": " + dto.getMeaning());
         return new ResponseEntity<Long>(wordService.save(dto), HttpStatus.OK);
