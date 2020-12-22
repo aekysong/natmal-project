@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: testbed
+    active: local
   jpa:
     show-sql: true
     thymeleaf:
@@ -32,7 +32,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://arjuna.db.elephantsql.com:5432/fgugucui
     username: fgugucui
-    password: # set password
+    password: x7ic23ri9XSlm3gS86sXiATL88XP0Y0f
     hikari:
       maximum-pool-size: 2
   jpa:
