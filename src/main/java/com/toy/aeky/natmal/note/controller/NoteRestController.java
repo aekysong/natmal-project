@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @AllArgsConstructor
-public class NoteController {
+public class NoteRestController {
 
     private NoteService noteService;
 
