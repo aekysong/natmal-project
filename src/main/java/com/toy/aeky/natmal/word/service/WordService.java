@@ -25,7 +25,7 @@ public class WordService {
     @Transactional(readOnly = true)
     public List<WordGetResponseDto> findAllDesc() {
         return wordRepository.findAllDesc()
-                .map(word -> new WordGetResponseDto(word))
+                .map(WordGetResponseDto::new)
                 .collect(Collectors.toList());
     }
 }

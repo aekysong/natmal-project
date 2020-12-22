@@ -17,10 +17,4 @@ import java.util.List;
 public class WordController {
 
     private WordService wordService;
-
-    @GetMapping("/words")
-    public String getAllWords(Model model) {
-        model.addAttribute("words", wordService.findAllDesc());
-        return "word_list";
-    }
 }
