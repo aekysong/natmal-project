@@ -20,7 +20,19 @@ public class WordService {
 
     @Transactional
     public Long save(WordSaveRequestDto dto) {
-        return wordRepository.save(dto.toEntity()).getId();
+        if (!isDuplicate(dto)) {
+            return wordRepository.save(dto.toEntity()).getId();
+        }
+        else {
+            throw new IllegalStateException("[ERROR] The word already exists.");
+        }
+    }
+
+    private boolean isDuplicate(WordSaveRequestDto dto) {
+        if (wordRepository.existsByWord(dto.getWord()) && wordRepository.existsByMeaning(dto.getMeaning())) {
+            return true;
+        }
+        return false;
     }
 
     @Transactional(readOnly = true)

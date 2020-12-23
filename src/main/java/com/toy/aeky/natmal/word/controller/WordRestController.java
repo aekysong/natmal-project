@@ -33,6 +33,11 @@ public class WordRestController {
     @PostMapping("/api/words")
     public ResponseEntity<Long> saveWord(@RequestBody WordSaveRequestDto dto) {
         System.out.println("[WordRestController] REQUEST>> " +  dto.getAuthor() + ">> " + dto.getWord() + ": " + dto.getMeaning());
-        return new ResponseEntity<Long>(wordService.save(dto), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(wordService.save(dto), HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(-1L, HttpStatus.CONFLICT);
+        }
     }
 }

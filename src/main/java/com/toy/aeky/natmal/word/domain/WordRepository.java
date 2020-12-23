@@ -13,4 +13,6 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     Stream<Word> findAllDesc();
 
     Word findTopByOrderByIdDesc();
+    boolean existsByWord(String word);
+    boolean existsByMeaning(String meaning);
 }
