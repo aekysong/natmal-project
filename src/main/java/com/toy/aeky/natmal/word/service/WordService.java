@@ -1,5 +1,6 @@
 package com.toy.aeky.natmal.word.service;
 
+import com.toy.aeky.natmal.word.domain.Word;
 import com.toy.aeky.natmal.word.domain.WordGetResponseDto;
 import com.toy.aeky.natmal.word.domain.WordRepository;
 import com.toy.aeky.natmal.word.domain.WordSaveRequestDto;
@@ -27,5 +28,10 @@ public class WordService {
         return wordRepository.findAllDesc()
                 .map(WordGetResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public WordGetResponseDto getLatestWord() {
+        return new WordGetResponseDto(wordRepository.findTopByOrderByIdDesc());
     }
 }

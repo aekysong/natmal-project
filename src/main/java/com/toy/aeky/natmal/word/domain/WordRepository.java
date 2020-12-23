@@ -11,4 +11,6 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             "FROM Word w " +
             "ORDER BY w.id DESC")
     Stream<Word> findAllDesc();
+
+    Word findTopByOrderByIdDesc();
 }

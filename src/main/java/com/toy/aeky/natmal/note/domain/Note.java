@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 @Entity
 public class Note {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String author;

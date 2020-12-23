@@ -1,5 +1,7 @@
 package com.toy.aeky.natmal.word.controller;
 
+import com.toy.aeky.natmal.word.domain.Word;
+import com.toy.aeky.natmal.word.domain.WordGetResponseDto;
 import com.toy.aeky.natmal.word.domain.WordSaveRequestDto;
 import com.toy.aeky.natmal.word.service.WordService;
 import lombok.AllArgsConstructor;
@@ -21,6 +23,11 @@ public class WordRestController {
     @GetMapping("/api/words")
     public ResponseEntity<List> getAllWords() {
         return new ResponseEntity<List>(wordService.findAllDesc(), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/word")
+    public ResponseEntity<WordGetResponseDto> getLatestWord() {
+        return new ResponseEntity<>(wordService.getLatestWord(), HttpStatus.OK);
     }
 
     @PostMapping("/api/words")
