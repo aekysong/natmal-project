@@ -24,7 +24,7 @@ public class WordService {
             return wordRepository.save(dto.toEntity()).getId();
         }
         else {
-            throw new IllegalStateException("[ERROR] The word already exists.");
+            throw new IllegalStateException("[ERROR] 이미 등록된 단어임");
         }
     }
 
