@@ -33,7 +33,11 @@ public class NoteRestController {
 
     @PostMapping("/api/notes")
     public ResponseEntity<Long> saveNote(@RequestBody NoteSaveRequestDto dto) {
-        System.out.println("REQUEST>> " + dto.getAuthor() + dto.getWord() + ": " + dto.getContent());
-        return new ResponseEntity<Long>(noteService.save(dto), HttpStatus.OK);
+        System.out.println("REQUEST>> " + dto.getAuthor() + ">> " + dto.getWord() + ": " + dto.getContent());
+        if (!dto.getContent().contains(dto.getWord())) {
+            System.out.println("[ERROR] 단어가 문장에 사용되지 않음");
+            return new ResponseEntity<Long>(-1L, HttpStatus.CONFLICT);
+        }
+        return new ResponseEntity<Long>(noteService.save(dto), HttpStatus.CREATED);
     }
 }
