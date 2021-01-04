@@ -20,7 +20,7 @@ public class WordService {
 
     @Transactional
     public Long save(WordSaveRequestDto dto) {
-        if (!isDuplicate(dto)) {
+        if (!isDuplicate(dto)) { //중복 검사
             return wordRepository.save(dto.toEntity()).getId();
         }
         else {
@@ -38,7 +38,7 @@ public class WordService {
     @Transactional(readOnly = true)
     public List<WordGetResponseDto> findAllDesc() {
         return wordRepository.findAllDesc()
-                .map(WordGetResponseDto::new)
+                .map(WordGetResponseDto::new) // :: method reference operator
                 .collect(Collectors.toList());
     }
 

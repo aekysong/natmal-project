@@ -11,26 +11,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/api")
 public class WordRestController {
 
     private WordService wordService;
 
-    @GetMapping("/api/words")
+    @GetMapping("/words")
     public ResponseEntity<List> getAllWords() {
         return new ResponseEntity<List>(wordService.findAllDesc(), HttpStatus.OK);
     }
 
-    @GetMapping("/api/word")
+    @GetMapping("/word")
     public ResponseEntity<WordGetResponseDto> getLatestWord() {
         return new ResponseEntity<>(wordService.getLatestWord(), HttpStatus.OK);
     }
 
-    @PostMapping("/api/words")
+    @PostMapping("/words")
     public ResponseEntity<Long> saveWord(@RequestBody WordSaveRequestDto dto) {
         System.out.println("[WordRestController] REQUEST>> " +  dto.getAuthor() + ">> " + dto.getWord() + ": " + dto.getMeaning());
         try {
